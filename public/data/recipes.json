@@ -1,0 +1,12 @@
+{
+    "recipes": [{
+        "recipeName": "Braised Beef with potatoes and carrots", 
+        "ingredients": ["chuck (blade) roast, carrots, russet or yukon gold potatoes, bay leaves"], 
+        "instructions": ["Turn the oven on to 325 degrees"]
+    }, 
+    {
+        "recipeName": "Koren Beef Bowls", 
+        "ingredients": ["ground beef", "carrots", "cucumber", "soy sauce", "gochujang"], 
+        "instructions": ["Make the sauce using the soy, ginger, gochujang"]
+    }]
+}
