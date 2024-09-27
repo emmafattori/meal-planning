@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 export interface Recipe {
  recipeName: string;
  ingredients: string[];
@@ -38,9 +38,9 @@ const [recipes, setRecipes] = useState<Recipe[]>([])
     <section className="flex min-h-screen flex-col items-center justify-between p-24">
       This is the recipes pages
 <ul>
-      {recipes.map((recipe) => {
+      {recipes.map((recipe, idx) => {
           return (
-            <li>
+            <li key={idx}>
               <h3>{recipe.recipeName}</h3>
               <p>{recipe.ingredients}</p>
               <p>{recipe.instructions}</p>
