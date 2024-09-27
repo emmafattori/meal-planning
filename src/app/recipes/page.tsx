@@ -16,7 +16,6 @@ export const getRecipes = async () => {
     throw new Error("Failed to fetch")
   }
   const recipeData = await response.json()
-  console.log(recipeData)
   return recipeData
 }
 
@@ -37,13 +36,20 @@ const [recipes, setRecipes] = useState<Recipe[]>([])
   return (
     <section className="flex min-h-screen flex-col items-center justify-between p-24">
       This is the recipes pages
+      {/* TODO - add recipe details page, pass the route */}
 <ul>
       {recipes.map((recipe, idx) => {
           return (
             <li key={idx}>
-              <h3>{recipe.recipeName}</h3>
-              <p>{recipe.ingredients}</p>
-              <p>{recipe.instructions}</p>
+              <h3>Name: {recipe.recipeName}</h3>
+              <ul>
+              {recipe.ingredients.map((ing, idx) => {
+                return (
+                  <li key={`ing-${idx}`}>{ing}</li>
+                )
+              })}
+              </ul>
+              <p>Instructions: {recipe.instructions}</p>
             </li>
           )
       })}
