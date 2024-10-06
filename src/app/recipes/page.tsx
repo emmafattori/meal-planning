@@ -1,4 +1,5 @@
 "use client";
+import { RecipeCard } from "@/components/recipe-card/recipe-card";
 import { useState } from "react";
 export interface Recipe {
  recipeName: string;
@@ -34,22 +35,16 @@ const [recipes, setRecipes] = useState<Recipe[]>([])
   console.log(recipes)
 
   return (
-    <section className="flex min-h-screen flex-col items-center justify-between p-24">
-      This is the recipes pages
+    <section className="text-center">
+      <h1>Recipes</h1>
       {/* TODO - add recipe details page, pass the route */}
-<ul>
+<ul className="w-full flex flex-wrap justify-around">
       {recipes.map((recipe, idx) => {
           return (
-            <li key={idx}>
-              <h3>Name: {recipe.recipeName}</h3>
-              <ul>
-              {recipe.ingredients.map((ing, idx) => {
-                return (
-                  <li key={`ing-${idx}`}>{ing}</li>
-                )
-              })}
-              </ul>
-              <p>Instructions: {recipe.instructions}</p>
+            <li key={idx} className="p-3 text-center shadow-lg m-3 rounded-lg">
+              <a>
+              <RecipeCard recipeName={recipe.recipeName} />
+              </a>
             </li>
           )
       })}
