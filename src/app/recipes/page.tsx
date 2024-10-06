@@ -36,12 +36,12 @@ const [recipes, setRecipes] = useState<Recipe[]>([])
 
   return (
     <section className="text-center">
-      <h1>Recipes</h1>
+      <h1 className="text-2xl">Recipes</h1>
       {/* TODO - add recipe details page, pass the route */}
-<ul className="w-full flex flex-wrap justify-around">
+<ul className="flex flex-wrap justify-around w-[90%] mx-auto">
       {recipes.map((recipe, idx) => {
           return (
-            <li key={idx} className="p-3 text-center shadow-lg m-3 rounded-lg">
+            <li key={idx} className="p-3 text-center shadow-lg rounded-lg w-[calc((100%/2)-2rem)] md:w-[calc((100%/3)-2rem)] m-4">
               <a>
               <RecipeCard recipeName={recipe.recipeName} />
               </a>
