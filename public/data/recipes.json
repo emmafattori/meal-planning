@@ -1,17 +1,20 @@
 {
     "recipes": [
         {
+        "recipeId": 1,
         "recipeName": "Braised Beef with potatoes and carrots", 
         "ingredients": ["5 pounds bone-in chuck roast (blade roast), boneless works too", "4 tsp salt", "1 1/2 tsp pepper", "1 tbs olive oil", "1/2 teaspoon cinnamon", "1/4 teaspoon black pepper", "1/4 teaspoon clove", "1/2 teaspoon cumin", "1/4 teaspoon cardamom", "1/2 teaspoon coriander", "3 small onions, sliced", "1 tsp salt", "all of the spice mix", "6 cloves garlic", "1 tbsp apple cider vinegar", "3 large bay leaves", "4 cups water"] ,
 
         "instructions": ["Preheat oven to 325F. Start by seasoning the chuck with salt and pepper on both sides. Make sure the chuck is at room temperate (let it sit out for an hour before cooking).", "Then, in a large enough dutch oven, add the oil and heat it. Sear the chuck on all sides, until a deep brown crust forms. Remove and set aside.", "Add the sliced onions and salt for the onions. Soften for a few minutes.", "Combine the spices together and add to the onions, continue to cook for 4-5 minutes.", "Add the smashed garlic, apple cider vinegar and bay leaves. Then add all the water and scrape the bottom of the pot.", "Add the chuck back in, cover and bake for 3 to 4 hours. It should be tender by the 3 hour mark, but you can leave it for another hour. You must test the beef and give it more time if needed", "Once chuck is falling off the bone, remove and place on a platter to keep warm. Strain the vegetables from the liquid, and place the liquid back into the pot. Place it on medium heat.", "Serve the chuck over mashed potatoes and roasted carrots."]
         }, 
     {
+        "recipeId": 2,
         "recipeName": "Beef Enchiladas", 
         "ingredients": ["ground beef", "1 red pepper", "1 onion", "6 mushrooms", "2 cloves garlic", "1 tbsp cumin", "1 tbsp paprika", "1 tbsp dried oregano",  "1 tsp cayenne pepper", "1 tsp onion powder", "1 tsp garlic powder", "2 small jars enchilada sauce", "1 tbsp olive oil", "tortillas", "shredded cheese", "fresh cilantro", "green onion"], 
         "instructions": ["Sauté the onions and pepper in the olive oil for 3-4 minutes.", "Add the garlic for another couple minutes, then add the ground beef.", "Right before the beef is done, add the mushrooms and the spices", "Shred the cheese while the beef is cooking.", "Spread some of the enchilada sauce on the bottom of your pan.", "Take out the tortillas, and start to add the beef filling in the bottom third, along with a sprinkle of cheese.", "Roll the tortilla so the seam side is down, and place it in the pan, repeat until the pan is full.", "Sprinkle more cheese on top, and put in the oven for 10 mins at 350 degrees, then 5 minutes on broil.", "Top with sliced green onions and cilantro then serve."]
     },
     {
+        "recipeId": 3,
         "recipeName": "Korean Beef Bowls", 
         "ingredients": ["ground beef", "1 red pepper", "1 onion", "6 mushrooms", "2 cloves garlic", "1 tbsp cumin", "1 tbsp paprika", "1 tbsp dried oregano",  "1 tsp cayenne pepper", "1 tsp onion powder", "1 tsp garlic powder", "2 small jars enchilada sauce", "1 tbsp olive oil", "tortillas", "shredded cheese", "fresh cilantro", "green onion"], 
         "instructions": ["Sauté the onions and pepper in the olive oil for 3-4 minutes.", "Add the garlic for another couple minutes, then add the ground beef.", "Right before the beef is done, add the mushrooms and the spices", "Shred the cheese while the beef is cooking.", "Spread some of the enchilada sauce on the bottom of your pan.", "Take out the tortillas, and start to add the beef filling in the bottom third, along with a sprinkle of cheese.", "Roll the tortilla so the seam side is down, and place it in the pan, repeat until the pan is full.", "Sprinkle more cheese on top, and put in the oven for 10 mins at 350 degrees, then 5 minutes on broil.", "Top with sliced green onions and cilantro then serve."]

@@ -1,7 +1,10 @@
 "use client";
 import { RecipeCard } from "@/components/recipe-card/recipe-card";
+import Link from "next/link";
+import router from "next/router";
 import { useState } from "react";
 export interface Recipe {
+  recipeId: number;
  recipeName: string;
  ingredients: string[];
  instructions: string[];   
@@ -34,6 +37,15 @@ const [recipes, setRecipes] = useState<Recipe[]>([])
 
   console.log(recipes)
 
+
+const handleRecipeClick = (recipe: any) => {
+  // Pass the recipe data in the router state
+  router.push({
+    pathname: `/recipes/${recipe.id}`,
+    query: { recipeId: recipe.id },
+  }, undefined, { shallow: true });
+};
+
   return (
     <section className="text-center bg-[#9BC4BC]">
       <h1 className="text-2xl">Recipes</h1>
@@ -42,9 +54,12 @@ const [recipes, setRecipes] = useState<Recipe[]>([])
       {recipes.map((recipe, idx) => {
           return (
             <li key={idx} className="p-3 text-center shadow-lg rounded-lg w-[calc((100%/2)-2rem)] md:w-[calc((100%/3)-2rem)] m-4">
-              <a>
+              <Link   href={{
+                pathname: `/recipes/${recipe.recipeId}`,
+                query: { ...recipe }
+              }}>
               <RecipeCard recipeName={recipe.recipeName} />
-              </a>
+              </Link>
             </li>
           )
       })}
