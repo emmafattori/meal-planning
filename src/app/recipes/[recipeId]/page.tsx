@@ -1,8 +1,9 @@
+"use client";
 import { useRouter } from "next/router"
 import { useEffect, useState } from "react";
 import { Recipe } from "../page";
 
-export const RecipeDetails = () => {
+const RecipeDetails = () => {
 
    const router = useRouter();
   const { recipeId } = router.query;
@@ -35,3 +36,5 @@ export const RecipeDetails = () => {
         </div>
     )
 }
+
+export default RecipeDetails;
