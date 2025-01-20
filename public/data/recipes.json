@@ -30,7 +30,20 @@
         "recipeName": "Marinated BBQ Chicken", 
         "ingredients": ["½ cup extra virgin olive oil", "½ cup balsamic vinegar", "¼ cup soy sauce", "¼ cup Worcestershire sauce", "⅛ cup lemon juice", "¾ cup brown sugar", "2 teaspoon dried rosemary", "2 tablespoon Dijon mustard", "1 ½ teaspoons salt", "1 teaspoon ground black pepper", "2 teaspoon garlic powder", "6 chicken breasts"], 
         "instructions": ["Combine all marinade ingredients in a large mixing bowl and whisk together. Remove a half a cup of marinade and reserve for basting the chicken later.", "Place chicken in a large resealable bag and pour marinade over the top. Gently massage chicken breasts and be sure to close bag securely. (If you have less time, consider poking holes in the chicken with a fork to allow the marinade to penetrate quickly.)", "Place chicken in a large resealable bag and pour marinade over the top. Gently massage chicken breasts and be sure to close bag securely. (If you have less time, consider poking holes in the chicken with a fork to allow the marinade to penetrate quickly.)", "Refrigerate chicken and marinate for at least 30 minutes and up to 24 hours. I find 4 to 6 hours to be perfect.", "Preheat grill to medium high heat and lightly oil the grates.", "Remove the chicken from the marinade, letting the excess drip off. Grill chicken for 5 to 6 minutes on each side or until cooked through.", "Baste the chicken occasionally with the reserved marinade.", "Once the chicken has reached 165°F, remove chicken from grill and tent with foil. Let chicken rest for at least 5 minutes before serving.", "If you bring the reserved marinade up to a boil, let simmer until slightly reduced, it makes a wonderful sauce to go on top of the chicken."]
+    }, 
+    {
+        "recipeId": 6,
+        "recipeName": "Mustard Marinated Chicken", 
+        "ingredients": ["1/3 cup white vinegar", "2 Tablespoons butter", "1 small yellow onion, diced small", "3 large cloves garlic, minced", "3/4 cup yellow mustard", "3/4 cup whole grain mustard", "1/2 cup brown sugar", "1/3 cup apple cider vinegar", "1/4 cup hot sauce", "Kosher salt & fresh ground pepper"], 
+        "instructions": ["Melt butter in a small pot and add onions & garlic – cook until soft, about 5 min", "Add mustards, brown sugar, apple cider vinegar, hot sauce and season with s & p", "Simmer over medium-low heat for 10-15 minutes", "Heat bbq to medium and place chicken down without sauce but you can baste the back with the sauce", "Cook until they start to develop grill marks, and turn over - now baste the top", "Baste them a bit more and then give them a couple more minutes"]
+    },
+    {
+        "recipeId": 7,
+        "recipeName": "Salmon Bowls", 
+        "ingredients": ["Skinless salmon", "Edamame beans unshelled", "carrots", "cucumbers cut up", "dried seaweed", "sesame seeds", "avocado", "rice", "soy sauce", "rice vinegar", "sesame oil", "hoisin sauce", "ginger", "garlic", "green onions", "salt and pepper"], 
+        "instructions": ["Mix the soy sauce, sesame oil, rice vinegar, hoisin sauce, ginger, garlic, green onions, salt and pepper in a bowl", "Marinate the salmon in the sauce for 30 minutes", "Cook the rice", "Cook the salmon in a pan, and then set aside", "Heat the edamame beans and cut up carrots, cucumber and green onions", "Assemble the bowls with rice, salmon, veggies, avocado, seaweed, sesame seeds and a drizzle of the sauce", "Add sriracha to mayo, and drizzle on top of bowl"]
     }
+    
 ]
 }
 
