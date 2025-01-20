@@ -1,40 +1,56 @@
-"use client";
-import { useRouter } from "next/router"
-import { useEffect, useState } from "react";
-import { Recipe } from "../page";
+import fs from 'fs';
+import path from 'path';
 
-const RecipeDetails = () => {
-
-   const router = useRouter();
-  const { recipeId } = router.query;
-  const [recipe, setRecipe] = useState(router.query || null);
-
-
-  useEffect(() => {
-    if (!recipe && recipeId) {
-      // Fallback: If recipe data isn't available from the router, fetch it again (optional)
-      const fetchRecipe = async () => {
-        try {
-          const res = await fetch(`/api/recipes/${recipeId}`);
-          const data = await res.json();
-          setRecipe(data);
-        } catch (err) {
-          console.error('Error fetching recipe:', err);
-        }
-      };
-      fetchRecipe();
-    }
-  }, [recipeId, recipe]);
-
-  if (!recipe) {
-    return <p>Loading...</p>;
-  }
-    return (
-        <div>This is the recipe details page
-
-            <h3>{recipe.recipeName}</h3>
-        </div>
-    )
+interface Recipe {
+  recipeId: number;
+  recipeName: string;
+  ingredients: string[];
+  instructions: string[];
 }
 
-export default RecipeDetails;
+async function fetchRecipeData(): Promise<{ recipes: Recipe[] }> {
+  // Using path.resolve to get the path to the JSON file in the public folder, since we're using a server-side function
+  const filePath = path.resolve('public', 'data', 'recipes.json'); // Absolute path to recipes.json
+
+  // Read the file synchronously (you can also use fs.promises.readFile for async reading)
+  const fileContents = await fs.promises.readFile(filePath, 'utf-8');
+
+  return JSON.parse(fileContents);
+}
+
+export default async function RecipeDetails({
+  params,
+}: {
+  params: { recipeId: string };
+}) {
+  const { recipeId } = params;
+
+  const { recipes } = await fetchRecipeData();
+
+  // Find the recipe with the matching recipeId
+  const recipe = recipes.find((r) => r.recipeId === parseInt(recipeId));
+
+  if (!recipe) {
+    return <div>Sorry, we couldn't find the recipe.</div>;
+  }
+
+  return (
+    <div className="m-10 grid gap-3">
+      <h1 className="border-b-yellow-400 border-b-2 text-2xl w-fit mx-auto text-center">{recipe.recipeName}</h1>
+
+      <h2 className="border-b-yellow-400 border-b-2 text-lg w-fit mx-auto">Ingredients</h2>
+      <ul>
+        {recipe.ingredients.map((ingredient, index) => (
+          <li key={index}>{ingredient}</li>
+        ))}
+      </ul>
+
+      <h2>Instructions</h2>
+      <ol>
+        {recipe.instructions.map((instruction, index) => (
+          <li key={index}>{instruction}</li>
+        ))}
+      </ol>
+    </div>
+  );
+}

@@ -24,6 +24,12 @@
         "recipeName": "Mexican Corn Salad", 
         "ingredients": ["4 ears of corn, or frozen corn", "1/2 red pepper finely chopped", "2 tbsp butter", "1 jalapeno finely chopped", "2 cloves garlic", "1/2 tsp chili powder", "1 lime", "1/2 cup feta cheese",  "1/2 cup cilantro", "3 tbsp mayo", "3 tbs sour cream", "salt & pepper"], 
         "instructions": ["Grill your corn on the BBQ, or heat up a cast iron pan on high heat with olive oil, and slightly char your corn", "chop up the peppers, jalapenos, cilatro and garlic, and toss into a bowl", "create your sauce with the mayo, sour cream, chili powder, lime juice and salt and pepper", "one your corn has cooled, at it to the chopped veggies", "when you're ready to serve, add your dressing and toss"]
+    },
+    {
+        "recipeId": 5,
+        "recipeName": "Marinated BBQ Chicken", 
+        "ingredients": ["½ cup extra virgin olive oil", "½ cup balsamic vinegar", "¼ cup soy sauce", "¼ cup Worcestershire sauce", "⅛ cup lemon juice", "¾ cup brown sugar", "2 teaspoon dried rosemary", "2 tablespoon Dijon mustard", "1 ½ teaspoons salt", "1 teaspoon ground black pepper", "2 teaspoon garlic powder", "6 chicken breasts"], 
+        "instructions": ["Combine all marinade ingredients in a large mixing bowl and whisk together. Remove a half a cup of marinade and reserve for basting the chicken later.", "Place chicken in a large resealable bag and pour marinade over the top. Gently massage chicken breasts and be sure to close bag securely. (If you have less time, consider poking holes in the chicken with a fork to allow the marinade to penetrate quickly.)", "Place chicken in a large resealable bag and pour marinade over the top. Gently massage chicken breasts and be sure to close bag securely. (If you have less time, consider poking holes in the chicken with a fork to allow the marinade to penetrate quickly.)", "Refrigerate chicken and marinate for at least 30 minutes and up to 24 hours. I find 4 to 6 hours to be perfect.", "Preheat grill to medium high heat and lightly oil the grates.", "Remove the chicken from the marinade, letting the excess drip off. Grill chicken for 5 to 6 minutes on each side or until cooked through.", "Baste the chicken occasionally with the reserved marinade.", "Once the chicken has reached 165°F, remove chicken from grill and tent with foil. Let chicken rest for at least 5 minutes before serving.", "If you bring the reserved marinade up to a boil, let simmer until slightly reduced, it makes a wonderful sauce to go on top of the chicken."]
     }
 ]
 }
