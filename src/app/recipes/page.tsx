@@ -47,7 +47,7 @@ const handleRecipeClick = (recipe: any) => {
 };
 
   return (
-    <section className="text-center bg-[#9BC4BC]">
+    <section className="text-center">
       <h1 className="text-2xl">Recipes</h1>
       {/* TODO - add recipe details page, pass the route */}
 <ul className="flex flex-wrap justify-around w-[90%] mx-auto">

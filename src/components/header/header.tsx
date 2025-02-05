@@ -1,6 +1,6 @@
 export const Header = () => {
     return (
-        <header className="bg-[#9BC4BC]">
+        <header className="">
             <section className="flex justify-center align-middle">
                 <div className="flex flex-col text-center">
 
