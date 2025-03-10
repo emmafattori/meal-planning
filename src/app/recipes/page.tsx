@@ -53,7 +53,7 @@ const handleRecipeClick = (recipe: any) => {
 <ul className="flex flex-wrap justify-around w-[90%] mx-auto">
       {recipes.map((recipe, idx) => {
           return (
-            <li key={idx} className="p-3 text-center shadow-lg bg-white w-[calc((100%/2)-2rem)] md:w-[calc((100%/3)-2rem)] m-4">
+            <li key={idx} className="p-3 text-center w-[calc((100%/2)-2rem)] md:w-[calc((100%/3)-2rem)] m-4">
               <Link   href={{
                 pathname: `/recipes/${recipe.recipeId}`,
                 query: { ...recipe }

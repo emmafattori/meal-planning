@@ -1,4 +1,11 @@
-
+import {
+    Card,
+    CardContent,
+    CardDescription,
+    CardFooter,
+    CardHeader,
+    CardTitle,
+  } from "@/components/ui/card"
 export interface Recipe{
     recipeName: string;
 }
@@ -8,7 +15,18 @@ export interface Recipe{
 export const RecipeCard = (recipe:Recipe) => {
 return (
     <div className="">
-        <h2 className="">{recipe.recipeName}</h2>
+        <Card>
+  <CardHeader>
+    <CardTitle>{recipe.recipeName}</CardTitle>
+    <CardDescription>Card Description</CardDescription>
+  </CardHeader>
+  <CardContent>
+    <p>Card Content</p>
+  </CardContent>
+  <CardFooter>
+    <p>Card Footer</p>
+  </CardFooter>
+</Card>
     </div>
 )
 }
