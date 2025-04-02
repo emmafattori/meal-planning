@@ -5,6 +5,7 @@ import Link from "next/link";
 import router from "next/router";
 import { useState } from "react";
 import { serverTimestamp } from "firebase/firestore";
+import Modal from "@/components/modal/modal";
 
 export interface Recipe {
   recipeId: number;
@@ -29,6 +30,7 @@ export const getRecipes = async () => {
 
 export default function Recipes() {
 const [recipes, setRecipes] = useState<Recipe[]>([])
+const [openModal, setOpenModal] = useState<boolean>(false)
 
   getRecipes().then((fetchedRecipes) => {
     setRecipes(fetchedRecipes.recipes)
@@ -37,7 +39,8 @@ const [recipes, setRecipes] = useState<Recipe[]>([])
   })
 
   return (
-    <section className="text-center">
+    <section className="text-center relative">
+      <button className="bg-black rounded-full text-white p-2 absolute top-5 right-5" onClick={() => setOpenModal(true)}>Add Recipe</button>
       <h1 className="text-2xl">Recipes</h1>
       {/* TODO - add recipe details page, pass the route */}
       <ul className="flex flex-wrap justify-around w-[90%] mx-auto">
@@ -54,6 +57,9 @@ const [recipes, setRecipes] = useState<Recipe[]>([])
           )
       })}
       </ul>
+      {openModal && (
+        <Modal />
+      )}
 
     </section>
   )
