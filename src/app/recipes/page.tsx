@@ -1,8 +1,11 @@
 "use client";
 import { RecipeCard } from "@/components/recipe-card/recipe-card";
+import { addDoc, collection, db } from "../../lib/firebase-config";
 import Link from "next/link";
 import router from "next/router";
 import { useState } from "react";
+import { serverTimestamp } from "firebase/firestore";
+
 export interface Recipe {
   recipeId: number;
  recipeName: string;
@@ -15,7 +18,7 @@ export interface ApiResponse {
 }
 
 export const getRecipes = async () => {
-  const response = await fetch('/data/recipes.json')
+  const response = await fetch('/recipes.json')
   if (!response.ok) {
     throw new Error("Failed to fetch")
   }
@@ -26,7 +29,9 @@ export const getRecipes = async () => {
 
 export default function Recipes() {
 const [recipes, setRecipes] = useState<Recipe[]>([])
-
+  const [title, setTitle] = useState<string>('');
+  const [ingredients, setIngredients] = useState<string>('');
+  const [instructions, setInstructions] = useState<string>('');
 
 
   getRecipes().then((fetchedRecipes) => {
@@ -44,6 +49,27 @@ const handleRecipeClick = (recipe: any) => {
     pathname: `/recipes/${recipe.id}`,
     query: { recipeId: recipe.id },
   }, undefined, { shallow: true });
+};
+
+
+const handleAddRecipe = async (e: React.FormEvent) => {
+  e.preventDefault();
+
+  try {
+    await addDoc(collection(db, 'recipes'), {
+      title,
+      ingredients: ingredients.split(',').map(ingredient => ingredient.trim()),
+      instructions: instructions.split('.').map(instruction => instruction.trim()),
+      createdAt: serverTimestamp(),
+    });
+    alert('Recipe added successfully!');
+    setTitle('');
+    setIngredients('');
+    setInstructions('');
+  } catch (error) {
+    console.error('Error adding recipe: ', error);
+    alert('Error adding recipe.');
+  }
 };
 
   return (
@@ -64,6 +90,40 @@ const handleRecipeClick = (recipe: any) => {
           )
       })}
       </ul>
+      <form onSubmit={handleAddRecipe}>
+      <div>
+        <label htmlFor="title">Recipe Title:</label>
+        <input
+          type="text"
+          id="title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="ingredients">Ingredients:</label>
+        <textarea
+          id="ingredients"
+          value={ingredients}
+          onChange={(e) => setIngredients(e.target.value)}
+          required
+        ></textarea>
+      </div>
+
+      <div>
+        <label htmlFor="instructions">Instructions:</label>
+        <textarea
+          id="instructions"
+          value={instructions}
+          onChange={(e) => setInstructions(e.target.value)}
+          required
+        ></textarea>
+      </div>
+        <button type="submit">Add Recipe</button>
+
+      </form>
     </section>
   )
 }

@@ -10,7 +10,7 @@ interface Recipe {
 
 async function fetchRecipeData(): Promise<{ recipes: Recipe[] }> {
   // Using path.resolve to get the path to the JSON file in the public folder, since we're using a server-side function
-  const filePath = path.resolve('public', 'data', 'recipes.json'); // Absolute path to recipes.json
+  const filePath = path.resolve('public', 'recipes.json'); // Absolute path to recipes.json
 
   // Read the file synchronously (you can also use fs.promises.readFile for async reading)
   const fileContents = await fs.promises.readFile(filePath, 'utf-8');
