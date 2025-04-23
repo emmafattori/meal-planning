@@ -1,3 +1,4 @@
+'use client'
 import {
     Card,
     CardContent,
@@ -15,18 +16,15 @@ export interface Recipe{
 export const RecipeCard = (recipe:Recipe) => {
 return (
     <div className="">
-        <Card>
-  <CardHeader>
-    <CardTitle>{recipe.recipeName}</CardTitle>
-    <CardDescription>Card Description</CardDescription>
-  </CardHeader>
-  <CardContent>
-    <p>Card Content</p>
-  </CardContent>
-  <CardFooter>
-    <p>Card Footer</p>
-  </CardFooter>
-</Card>
+          <Card>
+          <CardHeader>
+          <CardTitle>{recipe.recipeName}</CardTitle>
+          </CardHeader>
+          <CardContent>
+          </CardContent>
+          <CardFooter>
+          </CardFooter>
+        </Card>
     </div>
 )
 }

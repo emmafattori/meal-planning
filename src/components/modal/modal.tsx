@@ -39,7 +39,6 @@ const handleAddRecipe = async (e: React.FormEvent) => {
   };
     return (
       <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
-
         <div className="bg-white p-8 rounded-lg shadow-lg relative">
         <Button variant="outline" size="icon" className="absolute right-0 top-0" onClick={onClose}>
           <X />

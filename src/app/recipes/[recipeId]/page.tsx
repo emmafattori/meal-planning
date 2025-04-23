@@ -1,54 +1,67 @@
-import fs from 'fs';
-import path from 'path';
+'use client';
 
-interface Recipe {
-  recipeId: number;
-  recipeName: string;
-  ingredients: string[];
-  instructions: string[];
-}
+import { useParams } from 'next/navigation';
 
-async function fetchRecipeData(): Promise<{ recipes: Recipe[] }> {
-  // Using path.resolve to get the path to the JSON file in the public folder, since we're using a server-side function
-  const filePath = path.resolve('public', 'recipes.json');
-  const fileContents = await fs.promises.readFile(filePath, 'utf-8');
+import { useEffect, useState } from 'react';
+import { doc, getDoc } from 'firebase/firestore';
+import { db } from '@/lib/firebase-config';
+import { Recipe } from '../page';
 
-  return JSON.parse(fileContents);
-}
+const RecipeDetailsPage = () => {
+  const { recipeId } = useParams();
 
-export default async function RecipeDetails({
-  params,
-}: {
-  params: { recipeId: string };
-}) {
-  const { recipeId } = params;
+  const [recipe, setRecipe] = useState<Recipe | null>(null);
+  const [loading, setLoading] = useState(true);
 
-  const { recipes } = await fetchRecipeData();
+  useEffect(() => {
+    if (!recipeId || typeof recipeId !== 'string') return;
 
-  // Find the recipe with the matching recipeId
-  const recipe = recipes.find((r) => r.recipeId === parseInt(recipeId));
+    const fetchRecipe = async () => {
+      try {
+        const docRef = doc(db, 'recipes', recipeId);
+        const docSnap = await getDoc(docRef);
 
-  if (!recipe) {
-    return <div>Sorry, we couldn't find the recipe.</div>;
-  }
+        if (docSnap.exists()) {
+          const data = docSnap.data();
+          setRecipe({
+            recipeId: docSnap.id,
+            recipeName: data.title,
+            ingredients: data.ingredients || [],
+            instructions: data.instructions || [],
+          });
+        } else {
+          console.error('No such recipe!');
+        }
+      } catch (err) {
+        console.error('Failed to fetch recipe:', err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchRecipe();
+  }, [recipeId]); // Re-run if recipeId changes
+
+  if (loading) return <p>Loading recipe...</p>;
+  if (!recipe) return <p>Recipe not found.</p>;
 
   return (
-    <div className="m-10 grid gap-3">
-      <h1 className="border-b-yellow-400 border-b-2 text-2xl w-fit mx-auto text-center">{recipe.recipeName}</h1>
-
-      <h2 className="border-b-yellow-400 border-b-2 text-lg w-fit mx-auto">Ingredients</h2>
-      <ul>
-        {recipe.ingredients.map((ingredient, index) => (
-          <li key={index}>{ingredient}</li>
+    <div className="p-4 max-w-3xl mx-auto">
+      <h1 className="text-3xl font-bold mb-4">{recipe.recipeName}</h1>
+      <h2 className="text-xl font-semibold mb-2">Ingredients</h2>
+      <ul className="list-disc pl-6 mb-4">
+        {recipe.ingredients.map((ingredient, idx) => (
+          <li key={idx}>{ingredient}</li>
         ))}
       </ul>
-
-      <h2>Instructions</h2>
-      <ol>
-        {recipe.instructions.map((instruction, index) => (
-          <li key={index}>{instruction}</li>
+      <h2 className="text-xl font-semibold mb-2">Instructions</h2>
+      <ol className="list-decimal pl-6">
+        {recipe.instructions.map((step, idx) => (
+          <li key={idx}>{step}</li>
         ))}
       </ol>
     </div>
   );
-}
+};
+
+export default RecipeDetailsPage;
