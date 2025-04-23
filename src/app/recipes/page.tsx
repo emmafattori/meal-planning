@@ -58,7 +58,7 @@ const [openModal, setOpenModal] = useState<boolean>(false)
       })}
       </ul>
       {openModal && (
-        <Modal />
+        <Modal onClose={() => setOpenModal(false)} />
       )}
 
     </section>

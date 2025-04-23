@@ -1,8 +1,15 @@
 import { db } from "@/lib/firebase-config";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { useState } from "react";
+import { Button } from "@/components/ui/button"
+import { X } from "lucide-react";
 
-export const Modal = () => {
+
+export interface ModalProps {
+  onClose: () => void
+}
+
+export const Modal = ( {onClose}: ModalProps ) => {
 
     const [title, setTitle] = useState<string>('');
     const [ingredients, setIngredients] = useState<string>('');
@@ -24,51 +31,56 @@ const handleAddRecipe = async (e: React.FormEvent) => {
       setTitle('');
       setIngredients('');
       setInstructions('');
+      onClose();
     } catch (error) {
       console.error('Error adding recipe: ', error);
       alert('Error adding recipe.');
     }
   };
     return (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
-        <div className="bg-white p-8 rounded-lg shadow-lg">
-            <h2 className="text-2xl font-bold">Add A Recipe</h2>
-            <form onSubmit={handleAddRecipe}>
-      <div>
-        <label htmlFor="title">Recipe Title:</label>
-        <input
-          type="text"
-          id="title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          required
-        />
-      </div>
+      <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
 
-      <div>
-        <label htmlFor="ingredients">Ingredients:</label>
-        <textarea
-          id="ingredients"
-          value={ingredients}
-          onChange={(e) => setIngredients(e.target.value)}
-          required
-        ></textarea>
-      </div>
+        <div className="bg-white p-8 rounded-lg shadow-lg relative">
+        <Button variant="outline" size="icon" className="absolute right-0 top-0" onClick={onClose}>
+          <X />
+        </Button>
+          <h2 className="text-2xl font-bold">Add A Recipe</h2>
+          <form onSubmit={handleAddRecipe}>
+          <div>
+            <label htmlFor="title">Recipe Title:</label>
+            <input
+              type="text"
+              id="title"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              required
+            />
+          </div>
 
-      <div>
-        <label htmlFor="instructions">Instructions:</label>
-        <textarea
-          id="instructions"
-          value={instructions}
-          onChange={(e) => setInstructions(e.target.value)}
-          required
-        ></textarea>
-      </div>
-        <button type="submit">Add Recipe</button>
+          <div>
+            <label htmlFor="ingredients">Ingredients:</label>
+            <textarea
+              id="ingredients"
+              value={ingredients}
+              onChange={(e) => setIngredients(e.target.value)}
+              required
+            ></textarea>
+          </div>
 
-      </form>
-        </div>
-        </div>
+          <div>
+            <label htmlFor="instructions">Instructions:</label>
+            <textarea
+              id="instructions"
+              value={instructions}
+              onChange={(e) => setInstructions(e.target.value)}
+              required
+            ></textarea>
+          </div>
+          <button type="submit">Add Recipe</button>
+
+        </form>
+      </div>
+      </div>
     );
 }
 
