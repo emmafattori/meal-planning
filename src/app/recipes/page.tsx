@@ -20,16 +20,6 @@ export interface ApiResponse {
   hits: Recipe[]
 }
 
-// export const getRecipes = async () => {
-//   const response = await fetch('/recipes.json')
-//   if (!response.ok) {
-//     throw new Error("Failed to fetch")
-//   }
-//   const recipeData = await response.json()
-//   return recipeData
-// }
-
-
 export default function Recipes() {
 const [recipes, setRecipes] = useState<Recipe[]>([])
 const [openModal, setOpenModal] = useState<boolean>(false)
@@ -57,13 +47,12 @@ useEffect(() => {
 }, []);
 
   return (
-    <section className="text-center relative">
+    <section className="text-center relative my-6">
       <Button className="w-fit px-4 py-2 fixed bottom-0 right-0 m-10" onClick={() => setOpenModal(true)}>
           <CirclePlus />
           Add Recipe
         </Button>
-      <h1 className="text-2xl">Recipes</h1>
-      {/* TODO - add recipe details page, pass the route */}
+      <h1 className="scroll-m-20 text-center text-4xl font-extrabold tracking-tight text-balance">Recipes</h1>
       <ul className="flex flex-wrap justify-around w-[90%] mx-auto">
       {recipes.map((recipe, idx) => {
           return (
@@ -78,7 +67,6 @@ useEffect(() => {
       {openModal && (
         <Modal onClose={() => setOpenModal(false)} />
       )}
-
     </section>
   )
 }
