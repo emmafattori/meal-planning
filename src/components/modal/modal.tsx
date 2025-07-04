@@ -30,26 +30,22 @@ export const Modal = ( {onClose}: ModalProps ) => {
 
 
     const formSchema = z.object({
-      recipeTitle: z.string().min(2).max(50),
-      recipeInstructions:z.array(z.string()),
-      recipeIngredients: z.array(z.string())
+      recipeTitle: z.string(),
+      recipeInstructions:z.string(),
+      recipeIngredients:z.string(),
     })
 
     const form = useForm<z.infer<typeof formSchema>>({
       resolver: zodResolver(formSchema),
       defaultValues: {
         recipeTitle: "",
-        recipeInstructions: [],
-        recipeIngredients: [],
+        recipeInstructions: '',
+        recipeIngredients: '',
       },
     })
 
-    function onSubmit(values: z.infer<typeof formSchema>) {
-     
-      console.log(values)
-    }
-    const handleAddRecipe = async (values: z.infer<typeof formSchema>) => {
-    
+   async function onSubmit(values: z.infer<typeof formSchema>) {
+       
       try {
         await addDoc(collection(db, 'recipes'), {
           title,
@@ -66,9 +62,8 @@ export const Modal = ( {onClose}: ModalProps ) => {
         console.error('Error adding recipe: ', error);
         alert('Error adding recipe.');
       }
-      };
-   
-    
+      console.log(values)
+    }
     return (
       <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
         <div className="bg-white p-8 rounded-lg shadow-lg relative">
@@ -76,40 +71,6 @@ export const Modal = ( {onClose}: ModalProps ) => {
           <X />
         </Button>
           <h2 className="text-2xl font-bold">Add A Recipe</h2>
-          {/* <form onSubmit={handleAddRecipe}>
-          <div>
-            <label htmlFor="title">Recipe Title:</label>
-            <input
-              type="text"
-              id="title"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              required
-            />
-          </div>
-
-          <div>
-            <label htmlFor="ingredients">Ingredients:</label>
-            <textarea
-              id="ingredients"
-              value={ingredients}
-              onChange={(e) => setIngredients(e.target.value)}
-              required
-            ></textarea>
-          </div>
-
-          <div>
-            <label htmlFor="instructions">Instructions:</label>
-            <textarea
-              id="instructions"
-              value={instructions}
-              onChange={(e) => setInstructions(e.target.value)}
-              required
-            ></textarea>
-          </div>
-          <button type="submit">Add Recipe</button>
-
-        </form> */}
             <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
         <FormField
@@ -123,7 +84,7 @@ export const Modal = ( {onClose}: ModalProps ) => {
               <FormItem>
               <FormLabel>Recipe Title</FormLabel>
               <FormControl>
-                <Input placeholder="Baked salmon" {...field} />
+                <Input placeholder="Baked salmon" {...field}               onChange={(e) => setTitle(e.target.value)} required value={title} />
               </FormControl>
             
               <FormMessage />
@@ -131,7 +92,7 @@ export const Modal = ( {onClose}: ModalProps ) => {
             <FormItem>
               <FormLabel>Recipe Ingredients</FormLabel>
               <FormControl>
-                <Input placeholder="1 lb of salmon" {...field} />
+                <Input placeholder="1 lb of salmon" {...field}               onChange={(e) => setIngredients(e.target.value)} required value={ingredients} />
               </FormControl>
             
               <FormMessage />
@@ -139,7 +100,7 @@ export const Modal = ( {onClose}: ModalProps ) => {
             <FormItem>
               <FormLabel>Recipe Instructions</FormLabel>
               <FormControl>
-                <Input placeholder="Preheat oven to 350 degrees F" {...field} />
+                <Input placeholder="Preheat oven to 350 degrees F" {...field} onChange={(e) => setInstructions(e.target.value)} required value={instructions} />
               </FormControl>
             
               <FormMessage />
